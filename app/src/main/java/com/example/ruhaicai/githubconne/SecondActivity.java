@@ -13,7 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 /**
- * Ò³Ãæ¼ÓÔØ³ÊÏÖ
+ * é¡µé¢åŠ è½½å‘ˆç°
  */
 public class SecondActivity extends Activity {
     private WebView webView1;

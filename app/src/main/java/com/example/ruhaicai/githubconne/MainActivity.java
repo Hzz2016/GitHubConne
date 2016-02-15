@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
         Log.i("demo","this is test of gethub");
     }
 
-    //Ìø×ªµ½ÁíÒ»¸öÒ³Ãæ
+    //è·³è½¬åˆ°å¦ä¸€ä¸ªé¡µé¢
     public void trunToActivity(View view) {
         startActivity(new Intent(this, SecondActivity.class));
     }
