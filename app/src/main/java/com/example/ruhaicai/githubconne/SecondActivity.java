@@ -1,17 +1,58 @@
 package com.example.ruhaicai.githubconne;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebBackForwardList;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-
-public class SecondActivity extends ActionBarActivity {
+/**
+ * “≥√Êº”‘ÿ≥ œ÷
+ */
+public class SecondActivity extends Activity {
+    private WebView webView1;
+    private String loadUrl="http://www.baidu.com/";
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+
+        dialog=new ProgressDialog(this);
+
+        webView1= (WebView) findViewById(R.id.webview);
+        WebSettings settings = webView1.getSettings();
+        settings.setAllowContentAccess(true);
+        settings.setJavaScriptEnabled(true);
+        settings.setBuiltInZoomControls(true);
+
+        webView1.loadUrl("http://www.baidu.com/");
+        webView1.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                super.onProgressChanged(view, newProgress);
+                if (newProgress == 100) {
+                    dialog.dismiss();
+                } else {
+                    dialog.show();
+                }
+            }
+        });
+
+        webView1.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return super.shouldOverrideUrlLoading(view, url);
+            }
+        });
     }
 
     @Override
